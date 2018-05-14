@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(vicon_bridge)
 
+# This project is incompatible with arm processors such as the Jetson
+if(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
+    return()
+endif(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
+
 find_package(catkin REQUIRED COMPONENTS
     message_generation
     dynamic_reconfigure
